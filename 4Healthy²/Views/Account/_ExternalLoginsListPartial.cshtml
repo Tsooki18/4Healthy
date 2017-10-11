@@ -1,0 +1,28 @@
+﻿@model _4Healthy_.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+<h4>Por que criar uma conta?</h4>
+<hr />
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+               A 4Healthy proporciona ao usuário a possiblidade de criar uma Account de acesso para que assim ele possa ter um acesso mais rápido aos dados que ele deseja armazenar, assim como resultados de pesquisa.
+                Métodos externos de logins, tais como facebook, twitter, entre outros, ainda estão sendo requeridos para poderem ser implantados no aplicativo, garantindo um acesso mais rápido
+            </p>
+        </div>
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in loginProviders) {
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption Account">@p.AuthenticationType</button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}
