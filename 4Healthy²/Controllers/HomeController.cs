@@ -13,9 +13,9 @@ namespace _4Healthy_.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Sobre()
         {
-            ViewBag.Message = "Sobre a 4Healthy";
+            ViewBag.Message = "Saiba mais sobre a iniciativa 4ĦEALTHY !";
 
             return View();
         }
@@ -29,7 +29,7 @@ namespace _4Healthy_.Controllers
 
         public ActionResult Lista()
         {
-            ViewBag.Message = "Lista de Alimentos";
+            ViewBag.Message = "Lista de Alimentos - Licenciado pela USDA National Nutrient Database for Standard Reference";
 
             return View();
         }
