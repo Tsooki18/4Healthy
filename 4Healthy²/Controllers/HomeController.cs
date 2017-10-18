@@ -30,6 +30,13 @@ namespace _4Healthy_.Controllers
         public ActionResult Lista()
         {
             ViewBag.Message = "Lista de Alimentos - Licenciado pela USDA National Nutrient Database for Standard Reference";
+            
+            return View();
+        }
+
+        public ActionResult Exercicios()
+        {
+            ViewBag.Message = "Lista de Exercicios para auxiliar você que quer perder peso";
 
             return View();
         }
