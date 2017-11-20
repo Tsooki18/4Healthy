@@ -21,6 +21,14 @@
 
     </dl>
 </div>
+
+    <div>
+        <dd>
+            @Html.Partial("~/Views/Categorias/_ByAlimentos.cshtml", Model.Alimentos.ToList())
+        </dd>
+    </div>
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CategoriaId }) |
     @Html.ActionLink("Back to List", "Index")

@@ -11,17 +11,18 @@ using _4Healthy_.Models;
 
 namespace _4Healthy_.Controllers
 {
-    public class AlimentosController : Controller
+    public class AlimentoesController : Controller
     {
         private EFContext db = new EFContext();
 
-        // GET: Alimentos
+        // GET: Alimentoes
         public ActionResult Index()
         {
-            return View(db.Alimento.ToList());
+            var alimento = db.Alimento.Include(a => a.Categoria);
+            return View(alimento.ToList());
         }
 
-        // GET: Alimentos/Details/5
+        // GET: Alimentoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +37,19 @@ namespace _4Healthy_.Controllers
             return View(alimento);
         }
 
-        // GET: Alimentos/Create
+        // GET: Alimentoes/Create
         public ActionResult Create()
         {
+            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome");
             return View();
         }
 
-        // POST: Alimentos/Create
+        // POST: Alimentoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AlimentoId,Descricao,Calorias,Carboidratos,Proteinas,Gorduras")] Alimento alimento)
+        public ActionResult Create([Bind(Include = "AlimentoId,Descricao,CategoriaId,Calorias,Carboidratos,Proteinas,Gorduras")] Alimento alimento)
         {
             if (ModelState.IsValid)
             {
@@ -56,10 +58,11 @@ namespace _4Healthy_.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome", alimento.CategoriaId);
             return View(alimento);
         }
 
-        // GET: Alimentos/Edit/5
+        // GET: Alimentoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -71,15 +74,16 @@ namespace _4Healthy_.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome", alimento.CategoriaId);
             return View(alimento);
         }
 
-        // POST: Alimentos/Edit/5
+        // POST: Alimentoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AlimentoId,Descricao,Calorias,Carboidratos,Proteinas,Gorduras")] Alimento alimento)
+        public ActionResult Edit([Bind(Include = "AlimentoId,Descricao,CategoriaId,Calorias,Carboidratos,Proteinas,Gorduras")] Alimento alimento)
         {
             if (ModelState.IsValid)
             {
@@ -87,10 +91,11 @@ namespace _4Healthy_.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Nome", alimento.CategoriaId);
             return View(alimento);
         }
 
-        // GET: Alimentos/Delete/5
+        // GET: Alimentoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +110,7 @@ namespace _4Healthy_.Controllers
             return View(alimento);
         }
 
-        // POST: Alimentos/Delete/5
+        // POST: Alimentoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
