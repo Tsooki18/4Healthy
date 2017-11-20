@@ -1,0 +1,118 @@
+﻿@model _4Healthy_.Models.Alimento
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Você deseja mesmo deletar esse alimento?</h3>
+<div>
+    <h4>Alimento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calorias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calorias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carboidratos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Carboidratos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proteinas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proteinas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gorduras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gorduras)
+        </dd>
+
+    </dl>
+
+        @Html.AntiForgeryToken()
+        <div class="panel-footer panel-info">
+            <a href="#" class="btn btn-info" data-toggle="modal"
+               data-target="#deleteConfirmationModal">Remover</a>
+            @Html.ActionLink("Retornar para a listagem", "Index",
+                null, new { @class = "btn btn-info" })
+        </div>
+        <div class="modal fade" id="deleteConfirmationModal" tabindex="-1"
+             role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-ELTEismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">
+                            Confirmação de exclusão de
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Você está prestes a remover o produto @Model.Descricao do cadastro.
+                        </p>
+                        <p>
+                            <strong>
+                                Você está certo que deseja prosseguir?
+                            </strong>
+                        </p>
+                        @using (Html.BeginForm("Delete", "Alimentos",
+                            FormMethod.Post, new
+                            {
+                                @id = "delete-form",
+                                role = "form"
+                            }))
+                        {
+                            @Html.HiddenFor(m => m.Descricao)
+                            @Html.AntiForgeryToken()
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                onclick="$('#delete-form').submit();">
+                            Sim, exclua este produto.
+                        </button>
+                        <button type="button" class="btn btn-primary"
+                                data-dismiss="modal">
+                            Não, não exclua este produto.
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

@@ -162,7 +162,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Contexts\EFContext.cs" />
-    <Compile Include="Controllers\AlimentoesController.cs" />
+    <Compile Include="Controllers\AlimentosController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,17 +208,18 @@
     <Content Include="Views\Home\Contato.cshtml" />
     <Content Include="Views\Home\Sobre.cshtml" />
     <Content Include="Views\Home\Exercicios.cshtml" />
-    <Content Include="Views\Categorias\_ByAlimentos.cshtml" />
     <Content Include="Views\Categorias\Create.cshtml" />
     <Content Include="Views\Categorias\Delete.cshtml" />
     <Content Include="Views\Categorias\Details.cshtml" />
     <Content Include="Views\Categorias\Edit.cshtml" />
     <Content Include="Views\Categorias\Index.cshtml" />
-    <Content Include="Views\Alimentoes\Create.cshtml" />
-    <Content Include="Views\Alimentoes\Delete.cshtml" />
-    <Content Include="Views\Alimentoes\Details.cshtml" />
-    <Content Include="Views\Alimentoes\Edit.cshtml" />
-    <Content Include="Views\Alimentoes\Index.cshtml" />
+    <Content Include="Views\Alimentos\Create.cshtml" />
+    <Content Include="Views\Alimentos\Delete.cshtml" />
+    <Content Include="Views\Alimentos\Details.cshtml" />
+    <Content Include="Views\Alimentos\Edit.cshtml" />
+    <Content Include="Views\Alimentos\Index.cshtml" />
+    <Content Include="Views\Alimentos\_ByCategorias.cshtml" />
+    <Content Include="Views\Alimentos\_ByAlimentos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

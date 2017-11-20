@@ -28,7 +28,7 @@ namespace _4Healthy_.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria categoria = db.Categoria.Find(id);
+            Categoria categoria = db.Categoria.Where(f => f.CategoriaId == id).Include("Alimentos.Categoria").First();
             if (categoria == null)
             {
                 return HttpNotFound();
