@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    @RenderSection("styles", false)
 </head>
 <body>
     <div class="navbar navbar-#00FFFF navbar-fixed-top">
@@ -25,7 +26,6 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Sobre", "Sobre", "Home")</li>
                     <li>@Html.ActionLink("Contato", "Contato", "Home")</li>
-                    <li>@Html.ActionLink("Lista", "Lista", "Home")</li>
                     <li>@Html.ActionLink("Exercicios", "Exercicios", "Home")</li>
                     <li>@Html.ActionLink("Categorias", "Index", "Categorias")</li>
                     <li>@Html.ActionLink("Alimentos", "Index", "Alimentos")</li>
@@ -40,9 +40,8 @@
             <p>&copy; @DateTime.Now.Year - 4Ħealthy</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="@Url.Content("~/scripts/jquery-1.10.2.js")"></script>
+    <script src="@Url.Content("~/scripts/bootstrap.js")"></script>
+    @RenderSection("ScriptPage",false);
 </body>
 </html>
